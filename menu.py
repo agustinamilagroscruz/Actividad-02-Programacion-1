@@ -98,13 +98,17 @@ def ejecutar_opcion_4(matriz):
         print(f"\"{registro[4]}\"")
 
         palabra_buscar = solicitar_texto_no_vacio("\nIngrese la palabra o expresión a reemplazar: ")
-        palabra_reemplazo = input("Ingrese el nuevo contenido de reemplazo: ")
+        palabra_reemplazo = solicitar_texto_no_vacio("Ingrese el nuevo contenido de reemplazo: ")
 
-        original, transformado = normalizar_y_transformar(registro[4], palabra_buscar, palabra_reemplazo)
+        original, transformado, palabra_encontrada = normalizar_y_transformar(registro[4], palabra_buscar, palabra_reemplazo)
 
         print("\n--- RESULTADO DE LA TRANSFORMACIÓN ---")
         print(f"Texto Original:     \"{original}\"")
         print(f"Texto Transformado: \"{transformado}\"")
+
+        if not palabra_encontrada:
+            print(f"\n[AVISO] La palabra o expresión \"{palabra_buscar}\" no se encontró en el texto; no se realizó ningún reemplazo.")
+
         print("\n(Nota: La matriz original conserva el texto original intacto).")
     else:
         print(f"\n[AVISO] No se encontró ningún registro con el código {codigo}.")

@@ -25,7 +25,8 @@ def normalizar_y_transformar(texto, palabra_buscar, palabra_reemplazo):
     """
     Normaliza el texto eliminando espacios iniciales/finales innecesarios,
     aplica un criterio uniforme de minúsculas y realiza el reemplazo de una palabra o expresión.
-    Retorna el texto original y la nueva cadena resultante, preservando el original intacto.
+    Retorna el texto original, la nueva cadena resultante y un indicador de si la palabra
+    buscada fue encontrada en el texto, preservando el original intacto.
     """
 
     texto_normalizado = texto.strip()
@@ -34,12 +35,14 @@ def normalizar_y_transformar(texto, palabra_buscar, palabra_reemplazo):
     palabra_buscada_normalizada = palabra_buscar.lower()
     palabra_reemplazo_normalizada = palabra_reemplazo.lower()
 
+    palabra_encontrada = palabra_buscada_normalizada in texto_normalizado
+
     texto_transformado = texto_normalizado.replace(
         palabra_buscada_normalizada,
         palabra_reemplazo_normalizada
     )
 
-    return texto, texto_transformado
+    return texto, texto_transformado, palabra_encontrada
 
 
 def separar_y_reconstruir(texto, nuevo_separador=" - "):
