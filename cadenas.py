@@ -24,17 +24,20 @@ def obtener_vista_previa(texto, cantidad=20):
 def normalizar_y_transformar(texto, palabra_buscar, palabra_reemplazo):
     """
     Normaliza el texto eliminando espacios iniciales/finales innecesarios,
-    aplica formato capitalizado y realiza el reemplazo de una palabra o expresión.
-    Retorna el texto original y la nueva cadena resultante (preservando el original intacto).
+    aplica un criterio uniforme de minúsculas y realiza el reemplazo de una palabra o expresión.
+    Retorna el texto original y la nueva cadena resultante, preservando el original intacto.
     """
-    # 1. Eliminar espacios innecesarios
+
     texto_normalizado = texto.strip()
 
-    # 2. Aplicar un criterio uniforme (primera letra en mayúscula, resto en minúscula)
-    texto_normalizado = texto_normalizado.capitalize()
+    texto_normalizado = texto_normalizado.lower()
 
-    # 3. Realizar el reemplazo solicitado generando una nueva cadena
-    texto_transformado = texto_normalizado.replace(palabra_buscar, palabra_reemplazo)
+    palabra_buscada_normalizada = palabra_buscar.lower()
+
+    texto_transformado = texto_normalizado.replace(
+        palabra_buscada_normalizada,
+        palabra_reemplazo
+    )
 
     return texto, texto_transformado
 
