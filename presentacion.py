@@ -6,12 +6,15 @@ Responsabilidad: Salida y formateo visual de datos en consola (tablas, registros
 
 def abreviar_texto(texto, longitud_maxima):
     """
-    Si el texto supera la longitud máxima, retorna una versión abreviada utilizando (slicing).
+    Si el texto supera la longitud máxima, retorna una versión abreviada utilizando slicing.
     Agrega '...' al final para indicar que fue truncado.
     """
+    texto_resultado = texto
+
     if len(texto) > longitud_maxima:
-        return texto[:longitud_maxima - 3] + "..."
-    return texto
+        texto_resultado = texto[:longitud_maxima - 3] + "..."
+
+    return texto_resultado
 
 
 def mostrar_separador(caracter="-", longitud=100):
@@ -38,28 +41,25 @@ def mostrar_tabla_registros(matriz, titulo_tabla="LISTADO DE RESEÑAS"):
     """
     if len(matriz) == 0:
         print("\nNo hay registros para mostrar en la tabla.")
-        return
+    else:
+        mostrar_titulo(titulo_tabla)
 
-    mostrar_titulo(titulo_tabla)
+        encabezado = f"{'Código':^6} | {'Título':<24} | {'Género':<16} | {'Punt. (1-5)':^11} | {'Reseña':<36}"
+        print(encabezado)
+        mostrar_separador("-")
 
-    # Encabezados de columnas
-    encabezado = f"{'Código':^6} | {'Título':<24} | {'Género':<16} | {'Punt. (1-5)':^11} | {'Reseña':<36}"
-    print(encabezado)
-    mostrar_separador("-")
+        for fila in matriz:
+            codigo = fila[0]
+            titulo = abreviar_texto(fila[1], 24)
+            genero = abreviar_texto(fila[2], 16)
+            puntuacion = fila[3]
+            resena_corta = abreviar_texto(fila[4], 36)
 
-    # Filas de datos
-    for fila in matriz:
-        codigo = fila[0]
-        titulo = abreviar_texto(fila[1], 24)
-        genero = abreviar_texto(fila[2], 16)
-        puntuacion = fila[3]
-        resena_corta = abreviar_texto(fila[4], 36)
+            fila_formateada = f"{codigo:^6} | {titulo:<24} | {genero:<16} | {puntuacion:^11} | {resena_corta:<36}"
+            print(fila_formateada)
 
-        fila_formateada = f"{codigo:^6} | {titulo:<24} | {genero:<16} | {puntuacion:^11} | {resena_corta:<36}"
-        print(fila_formateada)
-
-    mostrar_separador("-")
-    print(f"Total de registros listados: {len(matriz)}")
+        mostrar_separador("-")
+        print(f"Total de registros listados: {len(matriz)}")
 
 
 def mostrar_registro_completo(registro):

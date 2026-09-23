@@ -28,15 +28,17 @@ def calcular_promedio_puntuacion(matriz):
     Calcula el promedio de las puntuaciones de todos los registros.
     Convierte explícitamente la puntuación almacenada como cadena de texto a entero.
     """
-    if len(matriz) == 0:
-        return 0.0
+    promedio = 0.0
 
-    suma_puntuaciones = 0
-    for fila in matriz:
-        puntuacion_numerica = int(fila[3])
-        suma_puntuaciones = suma_puntuaciones + puntuacion_numerica
+    if len(matriz) > 0:
+        suma_puntuaciones = 0
 
-    promedio = suma_puntuaciones / len(matriz)
+        for fila in matriz:
+            puntuacion_numerica = int(fila[3])
+            suma_puntuaciones = suma_puntuaciones + puntuacion_numerica
+
+        promedio = suma_puntuaciones / len(matriz)
+
     return promedio
 
 
@@ -44,15 +46,17 @@ def calcular_longitud_promedio_resenas(matriz):
     """
     Calcula el promedio de longitud (en caracteres) de las reseñas de la matriz.
     """
-    if len(matriz) == 0:
-        return 0.0
+    promedio_longitud = 0.0
 
-    suma_longitudes = 0
-    for fila in matriz:
-        longitud_actual = len(fila[4])
-        suma_longitudes = suma_longitudes + longitud_actual
+    if len(matriz) > 0:
+        suma_longitudes = 0
 
-    promedio_longitud = suma_longitudes / len(matriz)
+        for fila in matriz:
+            longitud_actual = len(fila[4])
+            suma_longitudes = suma_longitudes + longitud_actual
+
+        promedio_longitud = suma_longitudes / len(matriz)
+
     return promedio_longitud
 
 
