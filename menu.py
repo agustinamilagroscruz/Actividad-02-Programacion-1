@@ -64,7 +64,7 @@ def ejecutar_opcion_2(matriz):
     codigo = solicitar_codigo_entero("Ingrese el código del registro a consultar: ")
     registro = buscar_por_codigo(matriz, codigo)
 
-    if registro is not None:
+    if registro != -1:
         mostrar_registro_completo(registro)
     else:
         print(f"\n[AVISO] No se encontró ningún registro con el código {codigo}.")
@@ -76,7 +76,7 @@ def ejecutar_opcion_3(matriz):
     codigo = solicitar_codigo_entero("Ingrese el código del registro: ")
     registro = buscar_por_codigo(matriz, codigo)
 
-    if registro is not None:
+    if registro != -1:
         texto, longitud, inicio, fin = obtener_vista_previa(registro[4], cantidad=20)
         print(f"\nTítulo:               {registro[1]} (Código {registro[0]})")
         print(f"Reseña completa:      \"{texto}\"")
@@ -93,7 +93,7 @@ def ejecutar_opcion_4(matriz):
     codigo = solicitar_codigo_entero("Ingrese el código del registro: ")
     registro = buscar_por_codigo(matriz, codigo)
 
-    if registro is not None:
+    if registro != -1:
         print(f"\nReseña original seleccionada ({registro[1]}):")
         print(f"\"{registro[4]}\"")
 
@@ -131,7 +131,7 @@ def ejecutar_opcion_6(matriz):
     codigo = solicitar_codigo_entero("Ingrese el código del registro: ")
     registro = buscar_por_codigo(matriz, codigo)
 
-    if registro is not None:
+    if registro != -1:
         separador = solicitar_separador("\nIngrese el nuevo separador (o presione ENTER para ' - '): ")
         palabras, cantidad_palabras, texto_reconstruido = separar_y_reconstruir(registro[4], separador)
 
@@ -181,7 +181,7 @@ def ejecutar_opcion_8(matriz):
 
     # 5. Registro con la reseña más larga
     registro_mas_largo = obtener_registro_resena_mas_larga(matriz)
-    if registro_mas_largo is not None:
+    if registro_mas_largo != -1:
         print(f"5. Reseña de mayor longitud:")
         print(f"   - Título: {registro_mas_largo[1]} (Código {registro_mas_largo[0]})")
         print(f"   - Longitud: {len(registro_mas_largo[4])} caracteres")

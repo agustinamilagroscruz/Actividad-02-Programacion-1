@@ -7,12 +7,20 @@ Responsabilidad: Búsquedas, filtros y consultas sobre la matriz de registros.
 def buscar_por_codigo(matriz, codigo):
     """
     Realiza una búsqueda secuencial de un registro a partir de su código.
-    Retorna el registro si lo encuentra, o None si no existe en la matriz.
+    Retorna el registro si lo encuentra, o -1 si no existe en la matriz.
     """
-    for fila in matriz:
-        if fila[0] == codigo:
-            return fila
-    return None
+    indice = 0
+    encontrado = False
+    registro_encontrado = -1
+
+    while indice < len(matriz) and not encontrado:
+        if matriz[indice][0] == codigo:
+            registro_encontrado = matriz[indice]
+            encontrado = True
+        else:
+            indice = indice + 1
+
+    return registro_encontrado
 
 
 def buscar_por_palabra(matriz, expresion):

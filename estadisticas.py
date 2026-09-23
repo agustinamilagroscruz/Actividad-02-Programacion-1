@@ -61,16 +61,17 @@ def obtener_registro_resena_mas_larga(matriz):
     Determina y retorna el registro completo que posee la reseña con mayor cantidad de caracteres.
     Aplica el algoritmo de búsqueda de máximo.
     """
-    if len(matriz) == 0:
-        return None
+    registro_mayor = -1
 
-    registro_mayor = matriz[0]
-    longitud_maxima = len(registro_mayor[4])
+    if len(matriz) > 0:
+        registro_mayor = matriz[0]
+        longitud_maxima = len(registro_mayor[4])
 
-    for fila in matriz:
-        longitud_actual = len(fila[4])
-        if longitud_actual > longitud_maxima:
-            longitud_maxima = longitud_actual
-            registro_mayor = fila
+        for fila in matriz:
+            longitud_actual = len(fila[4])
+
+            if longitud_actual > longitud_maxima:
+                longitud_maxima = longitud_actual
+                registro_mayor = fila
 
     return registro_mayor
