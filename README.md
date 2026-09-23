@@ -61,7 +61,7 @@ Siguiendo las restricciones pedagógicas de la materia, **no se utiliza `try/exc
 ---
 
 ## Modularización y Estructura del Código
-El proyecto implementa separación de responsabilidades en 8 módulos independientes, comunicados exclusivamente por parámetros y valores de retorno, sin variables globales:
+El proyecto implementa separación de responsabilidades en 8 módulos independientes, utilizando parámetros y valores de retorno, sin que las funciones dependan de variables globales:
 
 - **`datos.py`:** Contiene la matriz con los 10 registros iniciales.
 - **`presentacion.py`:** Funciones de interfaz de salida: encabezados, formateo de tablas alineadas, abreviación de texto y fichas detalladas.

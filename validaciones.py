@@ -102,11 +102,19 @@ def solicitar_separador(mensaje="Ingrese el nuevo separador (o presione ENTER pa
     Solicita un separador para reconstruir cadenas.
     Si el usuario presiona ENTER sin escribir nada, retorna ' - ' por defecto.
     """
-    entrada = input(mensaje)
+    separador = ""
+    separador_valido = False
 
-    if len(entrada) == 0:
-        separador = " - "
-    else:
-        separador = entrada
+    while not separador_valido:
+        entrada = input(mensaje)
+
+        if len(entrada) == 0:
+            separador = " - "
+            separador_valido = True
+        elif len(entrada.strip()) > 0:
+            separador = entrada
+            separador_valido = True
+        else:
+            print("[ERROR] El separador debe ser diferente del espacio.")
 
     return separador

@@ -30,13 +30,12 @@ def normalizar_y_transformar(texto, palabra_buscar, palabra_reemplazo):
 
     texto_normalizado = texto.strip()
 
-    texto_normalizado = texto_normalizado.lower()
-
     palabra_buscada_normalizada = palabra_buscar.lower()
+    palabra_reemplazo_normalizada = palabra_reemplazo.lower()
 
     texto_transformado = texto_normalizado.replace(
         palabra_buscada_normalizada,
-        palabra_reemplazo
+        palabra_reemplazo_normalizada
     )
 
     return texto, texto_transformado
